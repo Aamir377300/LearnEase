@@ -7,7 +7,7 @@ export default function Layout() {
     <div>
       <header className="border-b border-gray-200 sticky top-0 bg-white/80 backdrop-blur">
         <nav className="nav">
-          <Link to="/" className="brand">Edunexus</Link>
+          <Link to="/" className="brand">LearnEase</Link>
           <div className="flex-1" />
           {user ? (
             <div className="flex items-center gap-4 text-sm">
