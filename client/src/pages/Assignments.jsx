@@ -61,7 +61,7 @@ export default function Assignments() {
     if (!file) return;
     setUploading((old) => ({ ...old, [assignmentId]: true }));
     try {
-      const url = await uploadToCloudinary(file, { folder: 'edunexus/submissions', resourceType: 'auto' });
+      const url = await uploadToCloudinary(file, { folder: 'LearnEase/submissions', resourceType: 'auto' });
       setSubmissionState((old) => ({ ...old, [assignmentId]: url }));
       alert('Uploaded');
     } catch (err) {

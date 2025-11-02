@@ -26,7 +26,7 @@ export default function AssignmentManager() {
     if (!file) return;
     setUploading(true);
     try {
-      const url = await uploadToCloudinary(file, { folder: 'edunexus/assignments', resourceType: 'auto' });
+      const url = await uploadToCloudinary(file, { folder: 'LearnEase/assignments', resourceType: 'auto' });
       setAttachmentUrl(url);
       alert('Uploaded');
     } catch (err) {

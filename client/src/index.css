@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 @layer base {
-  body { @apply bg-white text-gray-900; }
+  body { @apply bg-zinc-950 text-white; }
 }
 
 @layer components {
   .container { @apply max-w-6xl mx-auto px-4; }
-  .btn { @apply inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none; }
-  .btn-secondary { @apply inline-flex items-center rounded-md bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200; }
-  .input { @apply block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:ring-indigo-500; }
-  .label { @apply block text-sm font-medium text-gray-700 mb-1; }
-  .card { @apply rounded-xl border border-gray-200 bg-white shadow-sm; }
-  .card-body { @apply p-4 sm:p-6; }
+  .btn { @apply inline-flex items-center justify-center rounded-lg bg-cyan-700 px-5 py-2 text-sm font-semibold text-white shadow-cyan-700/30 shadow hover:bg-cyan-600 focus:outline-none transition; }
+  .btn-secondary { @apply inline-flex items-center justify-center rounded-lg bg-zinc-900 text-cyan-400 px-4 py-2 text-sm font-semibold border border-zinc-700 shadow hover:bg-cyan-950 hover:text-white transition; }
+  .input { @apply block w-full rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white shadow-sm focus:border-cyan-500 focus:outline-none transition; }
+  .label { @apply block text-sm font-medium text-zinc-300 mb-1; }
+  .card { @apply rounded-2xl border border-zinc-800 bg-zinc-950 shadow-md; }
+  .card-body { @apply p-6; }
   .nav { @apply container flex items-center gap-4 py-4; }
-  .brand { @apply text-lg font-bold text-indigo-600; }
-  .linklike { @apply text-sm text-gray-600 hover:text-gray-900; }
+  .brand { @apply text-xl font-extrabold text-cyan-400; }
+  .linklike { @apply text-sm text-cyan-400 hover:text-cyan-300 transition; }
 }

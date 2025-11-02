@@ -9,7 +9,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     initAuthFromStorage();
-    const token = localStorage.getItem('edunexus_token');
+    const token = localStorage.getItem('LearnEase_token');
     if (!token) {
       setLoading(false);
       return;

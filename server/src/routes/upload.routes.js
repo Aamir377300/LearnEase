@@ -4,7 +4,7 @@ const { cloudinary } = require('../config/cloudinary');
 
 // Returns signature for client-side uploads to Cloudinary
 router.get('/signature', verifyJWT, (req, res) => {
-  const folder = req.query.folder || 'edunexus';
+  const folder = req.query.folder || 'LearnEase';
   const timestamp = Math.round(Date.now() / 1000);
   const apiSecret = process.env.CLOUDINARY_API_SECRET;
   const apiKey = process.env.CLOUDINARY_API_KEY;

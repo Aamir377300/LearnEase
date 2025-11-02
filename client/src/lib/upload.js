@@ -1,6 +1,6 @@
 import { api } from './api';
 
-export async function uploadToCloudinary(file, { folder = 'edunexus', resourceType = 'auto' } = {}) {
+export async function uploadToCloudinary(file, { folder = 'LearnEase', resourceType = 'auto' } = {}) {
   if (!file) throw new Error('No file provided');
   const params = new URLSearchParams({ folder });
   const sigRes = await api.get(`/uploads/signature?${params.toString()}`);

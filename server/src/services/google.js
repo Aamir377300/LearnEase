@@ -29,7 +29,7 @@ async function createMeetEvent({ title, startAt }) {
       end: { dateTime: timeEnd.toISOString(), timeZone },
       conferenceData: {
         createRequest: {
-          requestId: 'edunexus-' + Math.random().toString(36).slice(2),
+          requestId: 'LearnEase-' + Math.random().toString(36).slice(2),
           conferenceSolutionKey: { type: 'hangoutsMeet' },
         },
       },
