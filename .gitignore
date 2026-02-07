@@ -1,17 +1,38 @@
-# Node modules and build artifacts (general)
+# Node / JS
 node_modules/
 dist/
 build/
 
-# dotenv files
+# Environment variables
+# Ignore real secrets
 server/.env
 client/.env
+client/.env.local
+client/.env.production
 
-# logs and OS clutter
+# Keep example files
+!server/env.example
+
+
+# Vite / tooling cache
+.vite/
+.cache/
+
+# Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS junk
 .DS_Store
 Thumbs.db
 
-# Ignore IDE/config
+
+# IDE / Editor
 .vscode/
+.idea/
 *.swp
+
+# Docker
+docker-data/
