@@ -92,14 +92,14 @@ vercel_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ---
 
-## 🔑 Secret #5: VERCEL_ORG_ID
+## 🔑 Secret #5: VERCEL_ORG_ID (Optional - Use Project ID if not found)
 
 **Name:**
 ```
 VERCEL_ORG_ID
 ```
 
-**Value:** (Get from Vercel project settings)
+**Value:** (Get from Vercel project settings - OPTIONAL)
 ```
 team_xxxxxxxxxxxxxxxxxxxxxxxx
 ```
@@ -109,8 +109,10 @@ team_xxxxxxxxxxxxxxxxxxxxxxxx
 2. Click your LearnEase project
 3. Go to "Settings" tab
 4. Scroll to "General"
-5. Copy "Team ID" (or "Org ID" if personal account)
-6. It looks like: `team_xxxxx` or `prj_xxxxx`
+5. Look for "Team ID" or "Org ID"
+6. **If you don't see it:** Skip this secret! Use Project ID instead.
+
+**Note:** If you're on a personal account (not a team), you might not have an Org ID. That's fine - the workflow will use your Project ID instead.
 
 ---
 
@@ -145,8 +147,18 @@ Before adding secrets, make sure you have:
 - [ ] Created Vercel account
 - [ ] Imported project to Vercel
 - [ ] Got Vercel Token
-- [ ] Got Vercel Org ID
 - [ ] Got Vercel Project ID
+- [ ] Got Vercel Org ID (optional - skip if not available)
+
+**Minimum Required Secrets (5):**
+1. VITE_API_URL
+2. RENDER_BACKEND_DEPLOY_HOOK
+3. BACKEND_URL
+4. VERCEL_TOKEN
+5. VERCEL_PROJECT_ID
+
+**Optional:**
+6. VERCEL_ORG_ID (only if you have a team account)
 
 ---
 

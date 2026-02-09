@@ -101,11 +101,11 @@ jobs:
           curl -X POST "${{ secrets.RENDER_BACKEND_DEPLOY_HOOK }}"
       
       - name: ⏳ Wait for deployment
-        if: secrets.RENDER_BACKEND_DEPLOY_HOOK != ''
+        if: ${{ secrets.RENDER_BACKEND_DEPLOY_HOOK != '' }}
         run: sleep 30
       
       - name: ✅ Check backend health
-        if: secrets.BACKEND_URL != ''
+        if: ${{ secrets.BACKEND_URL != '' }}
         run: |
           echo "Checking backend health..."
           response=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.BACKEND_URL }}/health || echo "000")
@@ -145,7 +145,7 @@ jobs:
           npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
         working-directory: ./client
         env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID || secrets.VERCEL_PROJECT_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       
       - name: ✅ Frontend Deployed
