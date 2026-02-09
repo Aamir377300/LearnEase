@@ -21,10 +21,10 @@ LearnEase is a mini-LMS (Learning Management System) built with the MERN stack. 
 
 ```bash
 
-cdserver
+cd server
 
 
-npminstall
+npm install
 
 ```
 
@@ -32,7 +32,7 @@ npminstall
 
 ```bash
 
-cp.env.example.env
+cp .env.example.env
 
 ```
 
@@ -78,7 +78,7 @@ ALLOWED_ORIGIN2= http://localhost:5173/
 
 ```bash
 
-npmstart
+npm start
 
 ```
 
@@ -86,7 +86,7 @@ npmstart
 
 ```bash
 
-cdclient
+cd client
 
 
 npm install
@@ -106,23 +106,48 @@ VITE_API_URL=your-backend-url
 
 ```
 
-## Setup using the Docker
+## 🐳 Docker Setup (Alternative)
 
-Type the command in the main root that is the LearnEase
+Run the entire application with Docker Compose:
 
-##### Regular startup
+```bash
+
+# From the LearnEase root directory
+
+
+# First time or after dependency changes(package.json or Dockerfile.dev)
+
+docker compose-f docker-compose.dev.yml up--build
+
+
+# Regular startup
+
+docker compose-f docker-compose.dev.yml up
+
+
+# Stop containers
+
+docker compose-f docker-compose.dev.yml down
 
 ```
-docker compose -f docker-compose.dev.yml up
-```
 
-##### First time / after changes to Dockerfile or package.json
+This starts both frontend and backend in containers with hot-reload enabled.
 
-```
-docker compose -f docker-compose.dev.yml up --build
-```
+## CI/CD Pipeline (GitHub Actions)
 
-## Demo Credentials
+The project uses an automated CI/CD pipeline powered by GitHub Actions to ensure reliable and stable deployments. A backend test suite consisting of five test cases is executed using: 
+```bash
+# Backend tests
+cd server
+npm test
+
+# Frontend lint
+cd client
+npm run lint
+```
+On every push or pull request to the main branch, the pipeline installs backend dependencies, runs all test cases, and checks for syntax and runtime errors. If any test fails or an error is detected, the deployment is immediately blocked, ensuring that broken code is never deployed. In such cases, the previously deployed version of the application remains live, preventing downtime or service disruption. Additionally, GitHub automatically sends email notifications to alert contributors about the failure. When all tests pass successfully, the backend is deployed automatically while the frontend continues to run without interruption. This process guarantees zero-downtime deployments and protects the production environment from unstable or untested changes.
+
+Demo Credentials
 
 - Admin:
   Email: admin@example.com
@@ -141,6 +166,34 @@ docker compose -f docker-compose.dev.yml up --build
   Password: student12
 
 (Create users via register or seed manually.)
+
+## 🎯 Key Features by Role
+
+### Students Can:
+
+- Browse and enroll in courses
+- Watch video lectures
+- Submit assignments
+- Participate in course chat
+- Join live Google Meet classes
+- Track their progress and grades
+
+### Instructors Can:
+
+- Create and manage courses
+- Upload video lectures and materials
+- Create assignments with due dates
+- Grade student submissions
+- Schedule live classes with Google Meet
+- Communicate with students via chat
+
+### Admins Can:
+
+- Manage all users and roles
+- Oversee all courses and content
+- Moderate submissions and chat
+- View system-wide analytics
+- Remove inappropriate content
 
 ## Project Layout
 
@@ -162,7 +215,7 @@ docker compose -f docker-compose.dev.yml up --build
 
 ## Additional Notes
 
-- All uploads are via Cloudinary; configure credentials for full video/file support.
+- All uploads are via Cloudinary, configure credentials for full video/file support.
 - To use Google Meet auto-scheduling, you must set up a Google Cloud project/OAuth and provide the required variables.
 - User roles are 'student', 'instructor', 'admin'; controls and visibility change with role.
 - All sensitive data is kept out of source—check `.gitignore` for .env handling.
