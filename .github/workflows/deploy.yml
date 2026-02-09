@@ -101,14 +101,18 @@ jobs:
           curl -X POST "${{ secrets.RENDER_BACKEND_DEPLOY_HOOK }}"
       
       - name: ⏳ Wait for deployment
-        if: ${{ secrets.RENDER_BACKEND_DEPLOY_HOOK != '' }}
+        if: ${{ env.RENDER_BACKEND_DEPLOY_HOOK != '' }}
         run: sleep 30
+        env:
+          RENDER_BACKEND_DEPLOY_HOOK: ${{ secrets.RENDER_BACKEND_DEPLOY_HOOK }}
       
       - name: ✅ Check backend health
-        if: ${{ secrets.BACKEND_URL != '' }}
+        if: ${{ env.BACKEND_URL != '' }}
+        env:
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
         run: |
           echo "Checking backend health..."
-          response=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.BACKEND_URL }}/health || echo "000")
+          response=$(curl -s -o /dev/null -w "%{http_code}" ${BACKEND_URL}/health || echo "000")
           if [ "$response" = "200" ]; then
             echo "✅ Backend deployed successfully!"
           else
