@@ -1,0 +1,60 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # CI: Test and Build
+  test-and-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      
+      - name: Install backend dependencies
+        working-directory: ./server
+        run: npm install
+      
+      - name: Install frontend dependencies
+        working-directory: ./client
+        run: npm install
+      
+      - name: Lint backend
+        working-directory: ./server
+        run: npm run lint || echo "No lint script"
+      
+      - name: Lint frontend
+        working-directory: ./client
+        run: npm run lint
+      
+      - name: Build frontend
+        working-directory: ./client
+        run: npm run build
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+
+  # CD: Deploy (only on main branch)
+  deploy:
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Deploy to Render
+        run: |
+          echo "Deploying to production..."
+          # Render auto-deploys when you push to main
+          # Or trigger webhook:
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}

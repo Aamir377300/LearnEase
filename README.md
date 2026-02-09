@@ -106,6 +106,22 @@ VITE_API_URL=your-backend-url
 
 ```
 
+## Setup using the Docker
+
+Type the command in the main root that is the LearnEase
+
+##### Regular startup
+
+```
+docker compose -f docker-compose.dev.yml up
+```
+
+##### First time / after changes to Dockerfile or package.json
+
+```
+docker compose -f docker-compose.dev.yml up --build
+```
+
 ## Demo Credentials
 
 - Admin:
