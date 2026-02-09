@@ -27,7 +27,7 @@ export default function LectureManager() {
       const url = await uploadToCloudinary(file, { folder: 'LearnEase/lectures', resourceType: 'video' });
       setVideoUrl(url);
       alert('Uploaded');
-    } catch (err) {
+    } catch (_err) {
       alert('Upload failed');
     } finally {
       setUploading(false);

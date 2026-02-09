@@ -29,7 +29,7 @@ export default function AssignmentManager() {
       const url = await uploadToCloudinary(file, { folder: 'LearnEase/assignments', resourceType: 'auto' });
       setAttachmentUrl(url);
       alert('Uploaded');
-    } catch (err) {
+    } catch (_err) {
       alert('Upload failed');
     } finally {
       setUploading(false);

@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 
 export default function CourseChat() {
   const { courseId } = useParams();
-  const { user } = useAuth();
+  const { user: _user } = useAuth();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
